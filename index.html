@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borwa Feeds & Forage | Quality Animal Feed</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #4a7c59;
+            --secondary: #8fc0a9;
+            --accent: #d8a47f;
+            --light: #f5f5f5;
+            --dark: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c58a63;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .product-info p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--dark);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #3a6347;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-img img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Page Styles */
+        .page {
+            display: none;
+            padding: 40px 0;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Cart Styles */
+        .cart-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .cart-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr auto;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+        
+        .cart-total {
+            text-align: right;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .checkout-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo" > 
+                <h1>Borwa <span>Feeds & Forage</span></h1>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="products">Products</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                    <li><a href="#" class="nav-link" data-page="cart">Cart (<span id="cart-count">0</span>)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="container">
+                <h2>Quality Animal Feed.</h2>
+                <p>Providing premium feed solutions for all your livestock needs. From forage to specialized pellets, we've got your animals covered.</p>
+                <a href="#" class="btn nav-link" data-page="products">Browse Products</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Products</h2>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/square hay feed.webp" alt="Lucerne Hay 25kg">
+                    </div>
+                    <div class="product-info">
+                        <h3>Lucerne Hay</h3>
+                        <p>High-quality lucerne hay bales, perfect for cattle.</p>
+                        <div class="product-price">R 200.00</div>
+                        <button class="add-to-cart" data-product="Lucerne Hay" data-price="200">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/50 kg feed.png" alt="Dairy Cattle Pellets 50kg">
+                    </div>
+                    <div class="product-info">
+                        <h3>Dairy Cattle Pellets</h3>
+                        <p>Specially formulated pellets for high milk production.</p>
+                        <div class="product-price">R 330.00</div>
+                        <button class="add-to-cart" data-product="Dairy Cattle Pellets" data-price="330">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/Lead-image_sorghum.jpg" alt="Maize Grains 50kg">
+                    </div>
+                    <div class="product-info">
+                        <h3>Maize Grains</h3>
+                        <p>Premium quality maize grains for various livestock.</p>
+                        <div class="product-price">R 450.00</div>
+                        <button class="add-to-cart" data-product="Maize Grains" data-price="450">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Page -->
+    <section id="products" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+            </div>
+            
+            <h3>Raw Forage</h3>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/square hay feed.webp" alt="Lucerne Hay 25kg">
+                    </div>
+                    <div class="product-info">
+                        <h3>Lucerne Hay</h3>
+                        <p>High-quality lucerne hay bales.</p>
+                        <div class="product-price">R 200.00</div>
+                        <button class="add-to-cart" data-product="Lucerne Hay" data-price="200">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/square hay feed.webp" alt="Lucerne Silage 25kg">
+                    </div>
+                    <div class="product-info">
+                        <h3>Lucerne Silage</h3>
+                        <p>Nutrient-rich lucerne silage.</p>
+                        <div class="product-price">R 180.00</div>
+                        <button class="add-to-cart" data-product="Lucerne Silage" data-price="180">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Grains</h3>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/maize grain.png" alt="Maize Grains 50kg">
+                    </div>
+                    <div class="product-info">
+                        <h3>Maize Grains</h3>
+                        <p>Premium quality maize grains.</p>
+                        <div class="product-price">R 450.00</div>
+                        <button class="add-to-cart" data-product="Maize Grains" data-price="450">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/sorghum grain.png" alt="Sorghum Grains 50kg">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sorghum Grains</h3>
+                        <p>High-energy sorghum grains.</p>
+                        <div class="product-price">R 400.00</div>
+                        <button class="add-to-cart" data-product="Sorghum Grains" data-price="400">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Specialty Feed Pellets (50kg bags)</h3>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/dairy feed pellet.png" alt="Dairy Cattle Pellets">
+                    </div>
+                    <div class="product-info">
+                        <h3>Dairy Cattle Pellets</h3>
+                        <p>For high milk production.</p>
+                        <div class="product-price">R 330.00</div>
+                        <button class="add-to-cart" data-product="Dairy Cattle Pellets" data-price="330">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/beef cattle feed.png" alt="Beef Cattle Pellets">
+                    </div>
+                    <div class="product-info">
+                        <h3>Beef Cattle Pellets</h3>
+                        <p>For optimal growth and weight gain.</p>
+                        <div class="product-price">R 350.00</div>
+                        <button class="add-to-cart" data-product="Beef Cattle Pellets" data-price="350">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/Sheep feed pellet.png" alt="Sheep Pellets">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sheep Pellets</h3>
+                        <p>Specially formulated for sheep.</p>
+                        <div class="product-price">R 320.00</div>
+                        <button class="add-to-cart" data-product="Sheep Pellets" data-price="320">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/goat feed pellet.png" alt="Goat Pellets">
+                    </div>
+                    <div class="product-info">
+                        <h3>Goat Pellets</h3>
+                        <p>Nutritionally balanced for goats.</p>
+                        <div class="product-price">R 300.00</div>
+                        <button class="add-to-cart" data-product="Goat Pellets" data-price="300">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/pig feed.png" alt="Pig Pellets">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pig Pellets</h3>
+                        <p>Complete nutrition for pigs.</p>
+                        <div class="product-price">R 350.00</div>
+                        <button class="add-to-cart" data-product="Pig Pellets" data-price="350">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/broiler feed.png" alt="Broiler Pellets">
+                    </div>
+                    <div class="product-info">
+                        <h3>Broiler Pellets</h3>
+                        <p>For fast-growing broiler chickens.</p>
+                        <div class="product-price">R 480.00</div>
+                        <button class="add-to-cart" data-product="Broiler Pellets" data-price="480">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="./images/layer feed.png" alt="Layer Pellets">
+                    </div>
+                    <div class="product-info">
+                        <h3>Layer Pellets</h3>
+                        <p>For optimal egg production.</p>
+                        <div class="product-price">R 400.00</div>
+                        <button class="add-to-cart" data-product="Layer Pellets" data-price="400">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Page -->
+    <section id="about" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Borwa Feeds</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Quality Feed Solutions</h2>
+                    <p>Borwa Feeds & Forage provides premium animal feed products to farmers and agricultural businesses across the region. Our commitment to quality, nutrition, and customer service has made us a trusted name in the industry.</p>
+                    <p>We source only the finest ingredients and utilize state-of-the-art processing techniques to ensure that our feeds deliver optimal nutrition for health, growth, and production.</p>
+                    <p>Our team of animal nutrition experts continuously works to improve our formulations based on the latest research and feedback from our customers.</p>
+                </div>
+                <div class="about-img">
+                    <img src="./images/borwa feed mill.jpg" alt="Borwa Feeds Facility">
+                </div>
+            </div>
+            
+            <div class="section-title" style="margin-top: 60px;">
+                <h2>Our Values</h2>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-info">
+                        <h3>Quality</h3>
+                        <p>We never compromise on the quality of our products. Every batch is tested to ensure it meets our high standards.</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-info">
+                        <h3>Sustainability</h3>
+                        <p>We're committed to sustainable farming practices and reducing our environmental footprint.</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-info">
+                        <h3>Customer Support</h3>
+                        <p>Our team is always available to provide advice and support for your specific feeding needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>📍 Stand No.69 Skuruleng, Bochum, 1689</p>
+                    <p>📞 (015) 345 6789</p>
+                    <p>✉️ info@borwafeeds.com</p>
+                    <p>🕒 Mon-Fri: 8:00 AM - 5:00 PM</p>
+                    <p>🕒 Sat: 8:00 AM - 5:00 PM</p>
+                    <p>🕒 Sun: 9:00 AM - 1:00 PM</p>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Page -->
+    <section id="cart" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Your Cart</h2>
+            </div>
+            
+            <div class="cart-container">
+                <div id="cart-items">
+                    <!-- Cart items will be dynamically added here -->
+                    <p class="empty-cart-message">Your cart is empty.</p>
+                </div>
+                
+                <div class="cart-total">
+                    Total: R <span id="cart-total">0.00</span>
+                </div>
+            </div>
+            
+            <div class="checkout-form">
+                <h3>Checkout Information</h3>
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label for="checkout-name">Full Name</label>
+                        <input type="text" id="checkout-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="checkout-email">Email</label>
+                        <input type="email" id="checkout-email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="checkout-phone">Phone</label>
+                        <input type="tel" id="checkout-phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="checkout-address">Delivery Address</label>
+                        <textarea id="checkout-address" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Complete Order</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Borwa Feeds</h3>
+                    <p>Quality animal feed and forage for all your livestock needs.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="products">Products</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
+                        <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Stand No.69 Skuruleng, Bochum, 1689</p>
+                    <p>Phone: (015) 345 6789</p>
+                    <p>Email: info@borwafeeds.com</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Borwa Feeds & Forage. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mainNav = document.getElementById('main-nav');
+            
+            // Initialize cart
+            let cart = JSON.parse(localStorage.getItem('borwaFeedsCart')) || [];
+            updateCartCount();
+            
+            // Navigation click handler
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // Hide all pages
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // Show target page
+                    document.getElementById(targetPage).classList.add('active');
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Add to cart functionality
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.getAttribute('data-product');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    
+                    // Check if product already in cart
+                    const existingItem = cart.find(item => item.product === product);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            product: product,
+                            price: price,
+                            quantity: 1
+                        });
+                    }
+                    
+                    // Save to localStorage
+                    localStorage.setItem('borwaFeedsCart', JSON.stringify(cart));
+                    
+                    // Update cart count
+                    updateCartCount();
+                    
+                    // Show confirmation
+                    alert(`${product} added to cart!`);
+                });
+            });
+            
+            // Update cart count
+            function updateCartCount() {
+                const count = cart.reduce((total, item) => total + item.quantity, 0);
+                document.getElementById('cart-count').textContent = count;
+                
+                // If on cart page, update cart display
+                if (document.getElementById('cart').classList.contains('active')) {
+                    updateCartDisplay();
+                }
+            }
+            
+            // Update cart display
+            function updateCartDisplay() {
+                const cartItems = document.getElementById('cart-items');
+                const cartTotal = document.getElementById('cart-total');
+                
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<p class="empty-cart-message">Your cart is empty.</p>';
+                    cartTotal.textContent = '0.00';
+                    return;
+                }
+                
+                let itemsHTML = '';
+                let total = 0;
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    itemsHTML += `
+                        <div class="cart-item">
+                            <div>${item.product}</div>
+                            <div>R ${item.price.toFixed(2)}</div>
+                            <div>
+                                <input type="number" min="1" value="${item.quantity}" data-product="${item.product}" class="item-quantity">
+                            </div>
+                            <div>R ${itemTotal.toFixed(2)}</div>
+                            <button class="remove-item" data-product="${item.product}">×</button>
+                        </div>
+                    `;
+                });
+                
+                cartItems.innerHTML = itemsHTML;
+                cartTotal.textContent = total.toFixed(2);
+                
+                // Add event listeners for quantity changes
+                const quantityInputs = document.querySelectorAll('.item-quantity');
+                quantityInputs.forEach(input => {
+                    input.addEventListener('change', function() {
+                        const product = this.getAttribute('data-product');
+                        const newQuantity = parseInt(this.value);
+                        
+                        if (newQuantity < 1) {
+                            this.value = 1;
+                            return;
+                        }
+                        
+                        const item = cart.find(item => item.product === product);
+                        item.quantity = newQuantity;
+                        
+                        localStorage.setItem('borwaFeedsCart', JSON.stringify(cart));
+                        updateCartCount();
+                    });
+                });
+                
+                // Add event listeners for remove buttons
+                const removeButtons = document.querySelectorAll('.remove-item');
+                removeButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const product = this.getAttribute('data-product');
+                        
+                        cart = cart.filter(item => item.product !== product);
+                        
+                        localStorage.setItem('borwaFeedsCart', JSON.stringify(cart));
+                        updateCartCount();
+                    });
+                });
+            }
+            
+            // Checkout form submission
+            const checkoutForm = document.getElementById('checkout-form');
+            if (checkoutForm) {
+                checkoutForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    if (cart.length === 0) {
+                        alert('Your cart is empty!');
+                        return;
+                    }
+                    
+                    // In a real application, you would process the order here
+                    alert('Thank you for your order! We will contact you shortly to confirm details.');
+                    
+                    // Clear cart
+                    cart = [];
+                    localStorage.removeItem('borwaFeedsCart');
+                    updateCartCount();
+                    
+                    // Redirect to home page
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    document.getElementById('home').classList.add('active');
+                });
+            }
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
